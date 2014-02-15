@@ -597,7 +597,13 @@ class WPCF7_ContactForm {
 		if ( $this->skip_mail )
 			return true;
 
-		$result = $this->compose_mail( $this->setup_mail_template( $this->mail, 'mail' ) );
+		if ( $this->is_true( 'flamingo_only_mode' ) ){
+			$send = false;
+		}else{
+			$send = true;
+		}
+
+		$result = $this->compose_mail( $this->setup_mail_template( $this->mail, 'mail' ), $send );
 
 		if ( $result ) {
 			$additional_mail = array();
