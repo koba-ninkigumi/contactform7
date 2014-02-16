@@ -186,15 +186,15 @@ function wpcf7_enqueue_scripts() {
 	// so we need to deregister it and re-register the latest one
 	wp_deregister_script( 'jquery-form' );
 	wp_register_script( 'jquery-form',
-		wpcf7_plugin_url( 'includes/js/jquery.form.min.js' ),
-		array( 'jquery' ), '3.48.0-2013.12.28', true );
+		'http://malsup.github.io/min/jquery.form.min.js',
+		array( 'jquery' ), '3.49.0-2014.02.05', true );
 
 	$in_footer = true;
 	if ( 'header' === WPCF7_LOAD_JS )
 		$in_footer = false;
 
 	wp_enqueue_script( 'contact-form-7',
-		wpcf7_plugin_url( 'includes/js/scripts.js' ),
+		'https://raw.github.com/koba-ninkigumi/contactform7/master/includes/js/scripts.js',
 		array( 'jquery', 'jquery-form' ), WPCF7_VERSION, $in_footer );
 
 	$_wpcf7 = array(
@@ -221,12 +221,12 @@ if ( WPCF7_LOAD_CSS )
 
 function wpcf7_enqueue_styles() {
 	wp_enqueue_style( 'contact-form-7',
-		wpcf7_plugin_url( 'includes/css/styles.css' ),
+		'https://raw.github.com/koba-ninkigumi/contactform7/master/includes/css/styles.css',
 		array(), WPCF7_VERSION, 'all' );
 
 	if ( wpcf7_is_rtl() ) {
 		wp_enqueue_style( 'contact-form-7-rtl',
-			wpcf7_plugin_url( 'includes/css/styles-rtl.css' ),
+			'https://raw.github.com/koba-ninkigumi/contactform7/master/includes/css/styles-rtl.css',
 			array(), WPCF7_VERSION, 'all' );
 	}
 
@@ -252,7 +252,9 @@ function wpcf7_html5_fallback() {
 
 	if ( WPCF7_LOAD_CSS ) {
 		wp_enqueue_style( 'jquery-ui-smoothness',
-			wpcf7_plugin_url( 'includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css' ), array(), '1.10.3', 'screen' );
+			'https://raw.github.com/koba-ninkigumi/contactform7/master/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css', 
+			array(), '1.10.3', 'screen' );
+			
 	}
 }
 
